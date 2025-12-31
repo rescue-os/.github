@@ -60,7 +60,7 @@ flowchart TB
     Train[Training & Competency Service]
     Asset[Assets & Equipment Service]
     Log[Operations Log / Audit Service]
-    AuthZ[Authorization Service (PDP + Policy Store)]
+    AuthZ["Authorization Service (PDP + Policy Store)"]
     NotifySvc[Notification Service]
     FileSvc[Files / Media Service]
     Search[Search / Index Service]
@@ -68,12 +68,12 @@ flowchart TB
 
   subgraph Messaging[Async / Integration]
     Bus[Azure Service Bus]
-    Eg[Event Grid (optional)]
+    Eg["Event Grid (optional)"]
   end
 
   subgraph Data[Data Stores]
     SQL[(Azure SQL / PostgreSQL)]
-    Cosmos[(Cosmos DB]
+    Cosmos[Cosmos DB]
     Redis[(Redis Cache)]
     Blob[(Blob Storage)]
   end
@@ -153,14 +153,10 @@ flowchart TB
 ```mermaid
 flowchart TB
   subgraph AuthZ[Authorization Service]
-    API[AuthZ Management API
-(Roles, Permissions, Assignments)]
+    API["AuthZ Management API (Roles, Permissions, Assignments)"]
     PDP[Policy Decision Point]
-    Store[(Policy Store
-Roles, Permissions,
-Memberships)]
-    Cache[(Decision Cache
-Short TTL)]
+    Store["(Policy Store Roles, Permissions, Memberships)"]
+    Cache["(Decision Cache Short TTL)"]
     Audit[Decision Audit Emitter]
   end
 
@@ -181,9 +177,11 @@ JWT Access Tokens]
   end
 
   BFF -->|JWT| Inc
-  Inc -->|Authorize(action, resource, tenant)| PDP
-  Team -->|Authorize(...)| PDP
-  Task -->|Authorize(...)| PDP
+  BFF -->|JWT| Team
+  BFF -->|JWT| Task
+  Inc -->|"Authorize (action, resource, tenant)"| PDP
+  Team -->|"Authorize(...)"| PDP
+  Task -->|"Authorize(...)"| PDP
 
   PDP --> Cache
   PDP --> Store
