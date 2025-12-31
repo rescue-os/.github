@@ -38,27 +38,21 @@ RescueOS is accessed via web and mobile applications. Users authenticate via **K
 ```mermaid
 flowchart TB
   subgraph Client[Clients]
-    Web[Web App
-(React / Next.js)]
-    Mobile[Mobile App
-iOS / Android]
+    Web[Web App]
+    Mobile[Mobile App]
   end
 
   subgraph Edge[Azure Edge]
-    APIM[API Gateway
-(Azure API Management)]
+    APIM[API Gateway]
     WAF[Front Door / WAF]
   end
 
   subgraph Identity[Identity]
-    KC[Keycloak
-OIDC / OAuth2
-Federation]
+    KC[Keycloak OIDC / OAuth Federation]
   end
 
   subgraph Platform[RescueOS on Azure Container Apps]
-    BFF[BFF / API Aggregator
-(optional)]
+    BFF[BFF / API Aggregator]
     Inc[Incident Service]
     Task[Tasking & Dispatch Service]
     Team[Teams & Roster Service]
@@ -66,8 +60,7 @@ Federation]
     Train[Training & Competency Service]
     Asset[Assets & Equipment Service]
     Log[Operations Log / Audit Service]
-    AuthZ[Authorization Service
-(PDP + Policy Store)]
+    AuthZ[Authorization Service (PDP + Policy Store)]
     NotifySvc[Notification Service]
     FileSvc[Files / Media Service]
     Search[Search / Index Service]
@@ -80,8 +73,7 @@ Federation]
 
   subgraph Data[Data Stores]
     SQL[(Azure SQL / PostgreSQL)]
-    Cosmos[(Cosmos DB
-optional)]
+    Cosmos[(Cosmos DB]
     Redis[(Redis Cache)]
     Blob[(Blob Storage)]
   end
