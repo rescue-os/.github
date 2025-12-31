@@ -20,8 +20,7 @@ flowchart LR
   Web --> API[RescueOS Platform API]
   Mobile --> API
 
-  ExtIdP[External Identity Providers
-(Microsoft/Google/SAML/OIDC)] --> KC[Keycloak]
+  ExtIdP[External Identity Providers (Microsoft/Google/SAML/OIDC)] --> KC[Keycloak]
   KC --> API
 
   API --> Notify[SMS/Email/Push Providers]
